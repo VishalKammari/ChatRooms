@@ -7,13 +7,17 @@ wss.on("connection", (socket) => {
         if (parsedMsg.type === 'join') {
             allSoket.push({
                 socket,
-                room: parsedMsg.payload.roomId
+                room: parsedMsg.payload.roomId,
+                name: parsedMsg.payload.name
             });
         }
         if (parsedMsg.type === 'chat') {
             const currentUser = allSoket.find((x) => x.socket == socket);
             const currentUserRoom = currentUser?.room;
-            allSoket.filter((x) => x.room === currentUserRoom).forEach((x) => x.socket.send(parsedMsg.payload.message));
+            allSoket.filter((x) => x.room === currentUserRoom).forEach((x) => x.socket.send(JSON.stringify({
+                message: parsedMsg.payload.message,
+                name: currentUser?.name
+            })));
         }
     });
 });
