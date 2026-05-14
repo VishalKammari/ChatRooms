@@ -1,6 +1,8 @@
 import {WebSocketServer, WebSocket} from "ws";
+import dotenv from 'dotenv';
+dotenv.config();
 
-const wss=new WebSocketServer({port:8080})
+const wss=new WebSocketServer({port:Number(process.env.PORT)})
 
 interface User{
     socket:WebSocket;
@@ -29,5 +31,9 @@ wss.on("connection",(socket)=>{
                             name: currentUser?.name
                         })))
         }
+    });
+
+    socket.on("close", () => {
+        allSoket = allSoket.filter(x => x.socket !== socket);
     });
 })
