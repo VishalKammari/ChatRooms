@@ -97,11 +97,11 @@ const Chat = () => {
                 <div className='bg-black text-white p-2 rounded-xl'>
                   <FaGithub size={18} />
                 </div>
-                <div className='leading-tight'>
+                {/* <div className='leading-tight'>
                   <h1 className='font-mono text-sm'>
                     Vishal Kammari
                   </h1>
-                </div>
+                </div> */}
         </a>
         </div>
       </div>
