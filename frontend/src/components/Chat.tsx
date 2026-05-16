@@ -22,7 +22,7 @@ const Chat = () => {
       navigate("/");
       return;
     }
-    const ws = new WebSocket("ws://localhost:8080");
+    const ws = new WebSocket("https://chatrooms-gq4l.onrender.com");
     ws.onopen = () => {
       ws.send(
         JSON.stringify({
@@ -100,7 +100,8 @@ const Chat = () => {
                 {/* <div className='leading-tight'>
                   <h1 className='font-mono text-sm'>
                     Vishal Kammari
-                  </h1>
+                  </h1>y
+
                 </div> */}
         </a>
         </div>
