@@ -146,7 +146,7 @@ const Chat = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-black/10 px-3 pb-15 sm:px-4 sm:py-3 shrink-0">
+      <div className="border-t border-black/10 px-3 pb-20 sm:px-4 sm:py-3 shrink-0">
         <div className="flex items-center gap-2">
           <input
             type="text"
