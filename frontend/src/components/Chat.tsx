@@ -17,7 +17,7 @@ const Chat = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const wsRef = useRef<WebSocket | null>(null);
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  
 
   useEffect(() => {
     if (!name) {
@@ -52,10 +52,6 @@ const Chat = () => {
       ws.close();
     };
   }, [roomId, name, navigate]);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
 
   const sendMessage = () => {
     if (!input.trim()) return;
@@ -92,7 +88,6 @@ const Chat = () => {
           </p>
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
-          {/* Share button */}
           <button
             onClick={copyShareLink}
             className="bg-black text-white px-3 py-1.5 rounded-2xl hover:opacity-90 transition cursor-pointer font-mono text-sm flex items-center gap-1.5"
@@ -125,7 +120,7 @@ const Chat = () => {
             className={`flex ${msg.self ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-[85%] sm:max-w-[65%] px-3 py-2.5 sm:px-4 sm:py-3 rounded-2xl break-words shadow-sm ${
+              className={`max-w-[85%] sm:max-w-[65%] px-3 py-2.5 sm:px-4 sm:py-3 rounded-2xl shadow-sm ${
                 msg.self
                   ? "bg-black text-white rounded-br-sm"
                   : "bg-zinc-100 text-black rounded-bl-sm"
@@ -142,8 +137,6 @@ const Chat = () => {
             </div>
           </div>
         ))}
-
-        <div ref={messagesEndRef} />
       </div>
 
       <div className="border-t border-black/10 px-3 pb-30 sm:px-4 sm:py-3 shrink-0">
